@@ -31,5 +31,6 @@ jobs:
         run: |
           SDKMANAGER="${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager"
           yes | "$SDKMANAGER" --licenses >/dev/null
-          "$SDKMANAGER" "platforms;android-37" "build-tools;37.0.0" "ndk;30.0.14904198"
+          "$SDKMANAGER" --channel=3 "platforms;android-37.0" "build-tools;37.0.0" "ndk;30.0.14904198"
+          ln -sfn "${ANDROID_HOME}/platforms/android-37.0" "${ANDROID_HOME}/platforms/android-37"
       - run: flutter build apk --debug
