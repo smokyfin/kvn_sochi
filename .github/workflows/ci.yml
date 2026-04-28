@@ -29,6 +29,7 @@ jobs:
       - run: flutter test
       - name: Install Android SDK components
         run: |
-          yes | sdkmanager --licenses >/dev/null
-          sdkmanager "platforms;android-37" "build-tools;37.0.0" "ndk;30.0.14904198"
+          SDKMANAGER="${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager"
+          yes | "$SDKMANAGER" --licenses >/dev/null
+          "$SDKMANAGER" "platforms;android-37" "build-tools;37.0.0" "ndk;30.0.14904198"
       - run: flutter build apk --debug
